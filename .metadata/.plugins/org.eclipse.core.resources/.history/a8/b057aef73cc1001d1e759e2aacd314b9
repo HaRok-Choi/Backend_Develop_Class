@@ -1,0 +1,10 @@
+package trainReservation.entity;
+
+// 기차 정보 Entity class
+public class Train {
+	private String trainNumber;	// 열차번호
+	private String departureTimes;	// 출발시간
+	private String arrivalTime;	// 도착시간
+	int takeMinute; // 걸리는 시간(분 단위)
+	String type; // 기차종류
+}

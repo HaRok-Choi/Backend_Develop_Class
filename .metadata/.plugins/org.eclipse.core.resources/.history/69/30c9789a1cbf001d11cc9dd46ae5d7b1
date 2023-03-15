@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 페이지</title>
+</head>
+<body>
+	<form>
+		<table border = "2" align = "center" >
+			<tr>
+				<th>ID</th>
+				<td colspan="2">
+					<input type="text" name = "user_id" placeholder = "아이디를 입력하세요." required/>
+				</td>
+			</tr>
+			<tr>
+				<th>Password</th>
+				<td colspan="2">
+					<input type="password" name = "user_password" placeholder = "비밀번호를 입력하세요." required/>
+				</td>
+			</tr>
+			<tr>
+				<th>Nickname</th>
+				<td colspan="2">
+					<input type="text" name = "user_nickname" placeholder = "닉네임을 입력하세요." required/>
+				</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td colspan="2">
+					<input type="text" name = "user_email" size = "6">
+					<select name = "email" size = "1">
+						<option value="naver.com">naver.com</option>
+						<option value="daum.net">daum.net</option>
+						<option value="google.com">google.com</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align = "center" colspan="3">
+					<input type="submit" value="가입">
+					<input type="reset" value="초기화">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,8 @@
+package trainReservation.entity;
+
+// 정차역 Entity class
+public class StopStation {
+	String stationName;
+	String departureStation;
+	String arrivalStation;
+}

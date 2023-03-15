@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v9.0 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v9.0 Server at localhost" name="Tomcat v9.0 Server at localhost" runtime-id="Apache Tomcat v9.0" server-type="org.eclipse.jst.server.tomcat.90" server-type-id="org.eclipse.jst.server.tomcat.90" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="14">
+    <list key="modules" value0="home::org.eclipse.jst.jee.server:home::jst.web::4.0" value1="html::org.eclipse.jst.jee.server:html::jst.web::3.0" value2="JSP_Object::org.eclipse.jst.jee.server:JSP_Object::jst.web::3.0" value3="JSP_forward&amp;redirect::org.eclipse.jst.jee.server:JSP_forward&amp;redirect::jst.web::3.0" value4="JSP_GET&amp;POST::org.eclipse.jst.jee.server:JSP_GET&amp;POST::jst.web::4.0" value5="JSP_ActionTag::org.eclipse.jst.jee.server:JSP_ActionTag::jst.web::3.0" value6="JSP_ObjectScope::org.eclipse.jst.jee.server:JSP_ObjectScope::jst.web::4.0"/>
+  </server>
+</servers>

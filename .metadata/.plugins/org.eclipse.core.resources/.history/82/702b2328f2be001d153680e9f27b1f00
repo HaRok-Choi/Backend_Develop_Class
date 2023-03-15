@@ -1,0 +1,7 @@
+package chapter06.B_Generic;
+
+public class Generic {
+	public static void main(String[] args) {
+		
+	}
+}

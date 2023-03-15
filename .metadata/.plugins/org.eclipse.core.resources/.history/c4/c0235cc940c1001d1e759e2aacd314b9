@@ -1,0 +1,9 @@
+package trainReservation.entity;
+
+// 좌석 Entity class
+// 남아있는 좌석 (class -> 호차, 좌석번호, 좌석상태)
+public class Seat {
+	int roomNumber;
+	String seatNumber;
+	boolean seatStatus;
+}

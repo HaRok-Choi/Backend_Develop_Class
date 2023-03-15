@@ -1,0 +1,20 @@
+package trainReservation.dto;
+
+import java.util.List;
+
+public class PostReservationDto {
+	
+	private String trainNumber;
+	private List<String> seats;
+	
+	public PostReservationDto() {
+		
+	}
+
+	public PostReservationDto(String trainNumber, List<String> seats) {
+		this.trainNumber = trainNumber;
+		this.seats = seats;
+	}
+	
+	
+}

@@ -1,0 +1,10 @@
+package trainReservation.controller;
+
+public class ReservationController {
+	
+	public void reservation() {
+		
+	}
+	
+	
+}

@@ -1,0 +1,10 @@
+package trainReservation.entity;
+
+// 비용 Entity class
+// 비용 (class -> 출발역, 도착역, 금액)
+// 독립적
+public class Cost {
+	String departureStation;
+	String arrivalStation;
+	int amount;
+}

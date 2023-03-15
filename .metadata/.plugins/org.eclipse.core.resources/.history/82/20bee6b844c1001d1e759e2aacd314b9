@@ -1,0 +1,19 @@
+package trainReservation.entity;
+
+// 정차역 Entity class
+// 정차역 (class -> 정차역에서도 역명, 정차시간, 출발/도착시간이 있기 때문)
+public class StopStation {
+	private String stationName;
+	private String departureStation;
+	private String arrivalStation;
+	
+	public StopStation() {}
+
+	public StopStation(String stationName, String departureStation, String arrivalStation) {
+		this.stationName = stationName;
+		this.departureStation = departureStation;
+		this.arrivalStation = arrivalStation;
+	}
+	
+	
+}
