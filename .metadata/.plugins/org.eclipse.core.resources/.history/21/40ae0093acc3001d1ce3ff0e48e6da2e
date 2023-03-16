@@ -1,0 +1,40 @@
+package board.entity;
+// 게시물
+
+import java.util.List;
+
+public class Board {
+	
+	private int boardNumber;
+	private String boardImageUrl;
+	private String writerEmail;
+	private String writeNickname;
+	private String writerProfileImageUrl;
+	private String writeDate;
+	private String title;
+	private String content;
+//	댓글수, 좋아요수는 굳이 안넣어도 됨 why? 리스트의 size를 구하면 됨
+	private int viewCount; 
+	private List<Like> likeList;
+	private List<Comment> commentList;
+	
+	public Board() {}
+
+	public Board(int boardNumber, String boardImageUrl, String writerEmail, String writeNickname,
+			String writerProfileImageUrl, String writeDate, String title, String content, int viewCount,
+			List<Like> likeList, List<Comment> commentList) {
+		this.boardNumber = boardNumber;
+		this.boardImageUrl = boardImageUrl;
+		this.writerEmail = writerEmail;
+		this.writeNickname = writeNickname;
+		this.writerProfileImageUrl = writerProfileImageUrl;
+		this.writeDate = writeDate;
+		this.title = title;
+		this.content = content;
+		this.viewCount = viewCount;
+		this.likeList = likeList;
+		this.commentList = commentList;
+	}
+	
+	
+}

@@ -37,9 +37,9 @@ public class PostReservationDto {
 		
 	}
 
-	public PostReservationDto(String trainNumber, List<String> seats) {
+	public PostReservationDto(String trainNumber, List<String> steats) {
 		this.trainNumber = trainNumber;
-		this.steats = seats;
+		this.steats = steats;
 	}
 
 	public String getTrainNumber() {
@@ -54,13 +54,13 @@ public class PostReservationDto {
 		return steats;
 	}
 
-	public void setSeats(List<String> seats) {
-		this.steats = seats;
+	public void setSeats(List<String> steats) {
+		this.steats = steats;
 	}
 
 	@Override
 	public String toString() {
-		return "PostReservationDto [trainNumber=" + trainNumber + ", seats=" + steats + "]";
+		return "PostReservationDto [trainNumber=" + trainNumber + ", steats=" + steats + "]";
 	}
 	
 	public boolean isEqualTrainNumber(String trainNumber) {

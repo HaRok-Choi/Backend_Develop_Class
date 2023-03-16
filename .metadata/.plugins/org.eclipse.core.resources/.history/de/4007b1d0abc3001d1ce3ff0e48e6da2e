@@ -1,0 +1,20 @@
+package board.entity;
+// 게시물
+public class Board {
+	
+	private int boardNumber;
+	private String boardImage;
+	private
+	private
+	private
+	private
+	private
+	private
+	private
+	private
+	private
+	private
+	
+	
+	
+}

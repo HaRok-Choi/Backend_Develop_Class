@@ -14,6 +14,8 @@ public class Train {
 
 	private List<StopStation> stopStations;
 	private List<Seat> seats;
+	
+	public Train() {}
 
 	public Train(String trainNumber, String departureStation, String departureTimes, String arrivalStation,
 			String arrivalTime, int takeMinute, String type, List<StopStation> stopStations, List<Seat> seats) {

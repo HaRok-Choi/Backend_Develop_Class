@@ -1,0 +1,14 @@
+package board.entity;
+
+public class User {
+	
+	private String email;
+	private String password;
+	private String passwordCheck;
+	private String nickname;
+	private String phoneNumber;
+	private String address;
+	private String addressDetail;
+	private String profileImageUrl;
+	
+}

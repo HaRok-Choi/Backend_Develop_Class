@@ -1,0 +1,9 @@
+package board.entity;
+// 댓글
+public class Comment {
+	
+	private String writerProfileImageUrl;
+	private String writerNickname;
+	private 
+	private 
+}

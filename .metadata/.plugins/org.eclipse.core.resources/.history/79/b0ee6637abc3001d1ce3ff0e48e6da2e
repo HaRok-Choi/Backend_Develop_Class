@@ -1,0 +1,12 @@
+package board.entity;
+// 댓글
+
+import java.util.Date;
+
+public class Comment {
+	
+	private String writerProfileImageUrl;
+	private String writerNickname;
+	private Date writeDatetime
+	private String 
+}
