@@ -1,0 +1,50 @@
+package board;
+
+import java.util.Scanner;
+
+import board.controller.UserController;
+import board.dto.request.user.SignUpDto;
+// 여기서 입력 함
+public class BoardApplication {
+
+	private static UserController usercontroller = new UserController(); 
+	
+	public static void main(String[] args) {
+		
+		while (true) {
+			
+			Scanner scanner = new Scanner(System.in);
+			
+			System.out.print("URL End Point : ");
+			String endPoint = scanner.nextLine();
+			
+			switch (endPoint) {
+			case "POST /sing-up":
+				SignUpDto dto = new SignUpDto();
+				System.out.print("이메일 주소 : ");
+				dto.setEmail(scanner.nextLine());
+				System.out.print("비밀번호 : ");
+				dto.setPassword(scanner.nextLine());
+				System.out.print("비밀번호 확인 : ");
+				dto.setPasswordCheck(scanner.nextLine());
+				System.out.print("닉네임: ");
+				dto.setNickname(scanner.nextLine());
+				System.out.print("휴대전화 번호 : ");
+				dto.setPassword(scanner.nextLine());
+				System.out.print("이메일 주소 : ");
+				dto.setPassword(scanner.nextLine());
+				System.out.print("이메일 주소 : ");
+				dto.setPassword(scanner.nextLine());
+				usercontroller.signUp();
+				break;
+
+			default:
+				break;
+			}
+			
+			
+		}
+		
+	}
+
+}

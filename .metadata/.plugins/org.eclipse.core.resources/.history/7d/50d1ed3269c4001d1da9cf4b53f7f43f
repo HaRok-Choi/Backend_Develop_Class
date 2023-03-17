@@ -1,0 +1,8 @@
+package board.common.constant;
+
+public interface ResponseMessage {
+//	추상 메서드, 함수만 쓸 수 있음
+//	변수를 담는 공간 만들 수 있ㅇ므
+//	구현부로는 못씀
+	public static final NOT_FOUND = "404 NOT FOUND";
+}

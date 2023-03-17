@@ -1,0 +1,11 @@
+package board.dto.response;
+
+// 규칙적으로 사용자에게 반환을 해주기 위한 포맷
+
+public class ResponseDto {
+//	어떠한 메서드던간에 여기서 반환을 할 거다.
+	private boolean status;
+	private String message;
+	private D data;
+	
+}

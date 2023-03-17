@@ -1,0 +1,28 @@
+package board.dto.response.user;
+// 유저 정보 반환
+public class SignInResponseDto {
+	
+//	비밀번호는 보안상 반환 안함
+	private String email;
+	private String nickname;
+	private String phoneNumber;
+	private String address;
+	private String addressDetail;
+	private String profileImageUrl;
+	private String token;
+	
+	public SignInResponseDto() {}
+
+	public SignInResponseDto(String email, String nickname, String phoneNumber, String address, String addressDetail,
+			String profileImageUrl, String token) {
+		this.email = email;
+		this.nickname = nickname;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+		this.addressDetail = addressDetail;
+		this.profileImageUrl = profileImageUrl;
+		this.token = token;
+	}
+	
+	
+}

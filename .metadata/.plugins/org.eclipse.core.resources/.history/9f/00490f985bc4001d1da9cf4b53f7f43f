@@ -1,0 +1,10 @@
+package board.controller;
+
+public class UserController {
+	
+	// 검증처리를 여기서 함
+	public void signUp() {
+		
+	}
+	
+}

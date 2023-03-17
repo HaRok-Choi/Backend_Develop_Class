@@ -1,0 +1,28 @@
+package board.controller;
+
+import board.dto.request.user.SignUpDto;
+import board.service.UserService;
+
+// 검증처리를 여기서 함, 입력을 위한 것들을 여기서 넘겨줌
+public class UserController {
+	
+	private UserService userService;
+	
+	public UserController() {
+		userService = new UserService();
+	}
+	
+	public void signUp(SignUpDto dto) {
+//		SignUpDto에서 검증한 메서드 불러옴
+		if (dto.validate()) {
+			System.out.println("400 Bad Request");
+			System.out.println("모든 값을 입력하세요.");
+			return;
+		}
+		
+		userService.signUp(dto);
+//		비밀번호 비교하기 위한것은 비즈니스 로직에 해당하기 때문에 여기서 검증하지 않는다.
+		
+	}
+	
+}

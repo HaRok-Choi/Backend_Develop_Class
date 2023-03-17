@@ -1,4 +1,7 @@
 package board.entity;
+
+import board.dto.request.user.SignUpDto;
+
 // 회원
 public class User {
 //	지속적인 애들만 변수로 만들면 된다.
@@ -25,6 +28,15 @@ public class User {
 		this.address = address;
 		this.addressDetail = addressDetail;
 		this.profileImageUrl = profileImageUrl;
+	}
+	
+	public User(SignUpDto dto) {
+		this.email = dto.getEmail();
+		this.password = dto.getPassword();
+		this.nickname = dto.getNickname();
+		this.phoneNumber = dto.getPhoneNumber();
+		this.address = dto.getAddress();
+		this.addressDetail = dto.getAddressDetail();
 	}
 
 	public String getEmail() {

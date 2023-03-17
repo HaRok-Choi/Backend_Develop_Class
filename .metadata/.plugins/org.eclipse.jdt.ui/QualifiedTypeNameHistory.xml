@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="chapter03.E_Inheritance.Developer"/>
-    <fullyQualifiedTypeName name="chapter03.F_Overriding.Developer"/>
-    <fullyQualifiedTypeName name="chapter03.F_Overriding.Human"/>
-    <fullyQualifiedTypeName name="java.lang.SuppressWarnings"/>
-    <fullyQualifiedTypeName name="chapter04.A_AccessModifier.Example4"/>
-    <fullyQualifiedTypeName name="chapter04.B_Polymorphism.SuperClass"/>
-    <fullyQualifiedTypeName name="chapter04.B_Polymorphism.SubClass1"/>
-    <fullyQualifiedTypeName name="chapter04.C_AbstractClass.Abstract"/>
-    <fullyQualifiedTypeName name="chapter04.D_Interface.ExampleInterface"/>
-    <fullyQualifiedTypeName name="example.exchange.ExchangeRate"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="java.lang.management.OperatingSystemMXBean"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.time.temporal.ChronoUnit"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-    <fullyQualifiedTypeName name="chapter05.C_DateTime.DateTime"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="java.time.Month"/>
@@ -49,15 +33,31 @@
     <fullyQualifiedTypeName name="trainReservation.MainApplication"/>
     <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
     <fullyQualifiedTypeName name="java.time.LocalTime"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="trainReservation.controller.ReservationController"/>
     <fullyQualifiedTypeName name="trainReservation.service.ReservationService"/>
-    <fullyQualifiedTypeName name="java.util.UUID"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="trainReservation.dto.GetTrainListDto"/>
     <fullyQualifiedTypeName name="trainReservation.dto.PostReservationDto"/>
     <fullyQualifiedTypeName name="trainReservation.dto.GetReservationDto"/>
     <fullyQualifiedTypeName name="trainReservation.entity.ReservationInfo"/>
+    <fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthOptionPaneUI"/>
+    <fullyQualifiedTypeName name="java.lang.StrictMath"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="board.controller.UserController"/>
+    <fullyQualifiedTypeName name="board.BoardApplication"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="board.dto.request.user.SignUpDto"/>
+    <fullyQualifiedTypeName name="board.service.UserService"/>
+    <fullyQualifiedTypeName name="board.repository.UserRepository"/>
+    <fullyQualifiedTypeName name="java.lang.Boolean"/>
+    <fullyQualifiedTypeName name="board.dto.request.user.SignInDto"/>
+    <fullyQualifiedTypeName name="board.common.constant.HttpStatus"/>
+    <fullyQualifiedTypeName name="java.util.UUID"/>
+    <fullyQualifiedTypeName name="board.dto.response.ResponseDto"/>
+    <fullyQualifiedTypeName name="board.common.constant.ResponseMessage"/>
+    <fullyQualifiedTypeName name="board.dto.response.user.SignInResponseDto"/>
+    <fullyQualifiedTypeName name="board.repository.BoardRepository"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="board.controller.BoardController"/>
 </qualifiedTypeNameHistroy>

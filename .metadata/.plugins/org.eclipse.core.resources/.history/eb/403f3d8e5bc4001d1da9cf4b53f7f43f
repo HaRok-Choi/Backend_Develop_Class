@@ -1,0 +1,10 @@
+package board.controller;
+
+public class UserController {
+	
+	
+	public void signUp() {
+		
+	}
+	
+}

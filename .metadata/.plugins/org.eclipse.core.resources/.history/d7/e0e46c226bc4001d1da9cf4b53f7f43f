@@ -1,0 +1,6 @@
+package board.dto.request.user;
+// 로그인 관련 Dto
+public class SignInDto {
+	
+	private
+}

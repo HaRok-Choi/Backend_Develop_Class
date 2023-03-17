@@ -1,0 +1,62 @@
+package board;
+
+import java.util.Scanner;
+
+import board.common.constant.HttpStatus;
+import board.controller.UserController;
+import board.dto.request.user.SignInDto;
+import board.dto.request.user.SignUpDto;
+// 여기서 입력 함
+public class BoardApplication {
+
+	private static UserController usercontroller = new UserController(); 
+	
+	public static void main(String[] args) {
+		
+		while (true) {
+			
+			Scanner scanner = new Scanner(System.in);
+			
+			System.out.print("URL End Point : ");
+			String endPoint = scanner.nextLine();
+			
+			switch (endPoint) {
+			case "POST /sing-up":
+				SignUpDto signUpDto = new SignUpDto();
+				
+				System.out.print("이메일 주소 : ");
+				signUpDto.setEmail(scanner.nextLine());
+				System.out.print("비밀번호 : ");
+				signUpDto.setPassword(scanner.nextLine());
+				System.out.print("비밀번호 확인 : ");
+				signUpDto.setPasswordCheck(scanner.nextLine());
+				System.out.print("닉네임 : ");
+				signUpDto.setNickname(scanner.nextLine());
+				System.out.print("휴대전화 번호 : ");
+				signUpDto.setPhoneNumber(scanner.nextLine());
+				System.out.print("주소 : ");
+				signUpDto.setAddress(scanner.nextLine());
+				System.out.print("상세 주소 : ");
+				signUpDto.setAddressDetail(scanner.nextLine());
+				
+				usercontroller.signUp(signUpDto);
+//				System.out.println(dto.toString()); 값이 잘 들어 갔는지 확인
+				
+				break;
+				
+			case "POST /sign-in":
+				SignInDto signInDto = new SignInDto();
+				System.out.print("이메일 주소 : ");
+				signInDto.setEmail(scanner.nextLine());
+				System.out.print("비밀번호");
+				break;
+			default:
+				System.out.println(HttpStatus.NOT_FOUND); // 잘못 입력하면 이거 뜸
+			}
+			
+			
+		}
+		
+	}
+
+}

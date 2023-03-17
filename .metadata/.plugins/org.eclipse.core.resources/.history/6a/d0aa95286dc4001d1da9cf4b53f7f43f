@@ -1,0 +1,5 @@
+package board.dto.response.user;
+// 유저 정보 봔환
+public class SignInResponseDto {
+
+}

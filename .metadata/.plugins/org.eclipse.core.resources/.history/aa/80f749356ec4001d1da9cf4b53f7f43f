@@ -1,0 +1,38 @@
+package board.service;
+
+import board.common.constant.ResponseMessage;
+import board.dto.request.user.SignUpDto;
+import board.dto.response.ResponseDto;
+import board.entity.User;
+import board.repository.UserRepository;
+
+public class UserService {
+	
+	private UserRepository userRepository;
+	
+	public UserService() {
+		userRepository = new UserRepository();
+	}
+	
+	public ResponseDto<Boolean> signUp(SignUpDto dto) {
+//		비밀번호 비교는 여기서 검증을 함
+		String email = dto.getEmail();
+		String password = dto.getPassword();
+		String passwordCheck = dto.getPasswordCheck();
+		
+		boolean hasEmail = userRepository.existsByEmail(email);
+		if (hasEmail) {
+			return new ResponseDto<Boolean>(false, ResponseMessage.EXIST_EMAIL, false);
+		}
+		
+		if (!password.equals(passwordCheck)) {
+			return new ResponseDto<Boolean>(false, ResponseMessage.PASSWORD_NOT_MATCH, false);
+		}
+		
+		User user = new User(dto);
+		userRepository.save(user);
+		
+		return new ResponseDto<Boolean>(true, ResponseMessage.SUCCESS, true);
+	}
+	
+}
