@@ -37,6 +37,7 @@ public class UserService {
 		return new ResponseDto<Boolean>(true, ResponseMessage.SUCCESS, true);
 	}
 	
+//	로그인 할때 DB에 있는 이메일, 비밀번호 일치 여부
 	public ResponseDto<SignInResponseDto> signIn(SignInDto dto) {
 		SignInResponseDto data = null;
 		
@@ -57,23 +58,5 @@ public class UserService {
 		
 		return new ResponseDto<SignInResponseDto>(true, ResponseMessage.SUCCESS, data);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

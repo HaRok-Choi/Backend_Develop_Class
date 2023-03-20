@@ -33,6 +33,7 @@ public class SignInDto {
 		return "SignInDto [email=" + email + ", password=" + password + "]";
 	}
 	
+//	검증하는거
 	public boolean validate() {
 		boolean result = this.email.isBlank() || this.password.isBlank(); 
 		return result;

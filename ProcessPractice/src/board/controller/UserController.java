@@ -16,25 +16,26 @@ public class UserController {
 		userService = new UserService();
 	}
 	
+//	회원가입
 	public void signUp(SignUpDto dto) {
 //		SignUpDto에서 검증한 메서드 불러옴
 		if (dto.validate()) {
 			System.out.println(HttpStatus.BAD_REQUEST);
 			return;
 		}
-		
 		ResponseDto<Boolean> response = userService.signUp(dto);
-		System.out.println(response.toString());
+		System.out.println(response.toString());	// 값 확인 용도
 //		비밀번호 비교하기 위한것은 비즈니스 로직에 해당하기 때문에 여기서 검증하지 않는다.
 	}
 	
+//	로그인
 	public void signIn(SignInDto dto) {
 		if (dto.validate()) {
 			System.out.println(HttpStatus.BAD_REQUEST);
 			return;
 		}
 		ResponseDto<SignInResponseDto> response = userService.signIn(dto);
-		System.out.println(response.toString());
+		System.out.println(response.toString());	// 값 확인 용도
 	}
 	
 }
