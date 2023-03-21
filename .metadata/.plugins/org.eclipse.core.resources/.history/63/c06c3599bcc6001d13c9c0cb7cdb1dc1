@@ -1,0 +1,25 @@
+package board.dto.response.board;
+
+import java.util.List;
+
+import board.entity.Comment;
+import board.entity.Like;
+
+public class PostBoardResponseDto {
+	
+	private int boardNumber;
+	private String boardImageUrl;
+	private String writerEmail;
+	private String writeNickname;
+	private String writerProfileImageUrl;
+	private String writeDate;
+	private String title;
+	private String content;
+//	댓글수, 좋아요수는 굳이 안넣어도 됨 why? 리스트의 size를 구하면 됨
+	private int viewCount;
+	private List<Like> likeList;
+	private List<Comment> commentList;
+	
+	public PostBoardResponseDto() {}
+	
+}

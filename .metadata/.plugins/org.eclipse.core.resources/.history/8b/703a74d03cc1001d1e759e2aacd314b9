@@ -1,9 +1,0 @@
-package trainReservation.entity;
-
-// 기차 정보 Entity class
-public class Train {
-	private String trainNumber;
-	private String departureTimes;
-	private String arrivalTime;
-	int takeTime; // 걸리는 시간
-}

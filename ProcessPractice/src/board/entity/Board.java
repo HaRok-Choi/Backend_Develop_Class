@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import board.dto.request.board.PatchBoardDto;
 import board.dto.request.board.PostBoardDto;
 import board.repository.BoardRepository;
 
@@ -154,5 +155,16 @@ public class Board {
 				+ ", writeDate=" + writeDate + ", title=" + title + ", content=" + content + ", viewCount=" + viewCount
 				+ ", likeList=" + likeList + ", commentList=" + commentList + "]";
 	}
-
+	
+//	조회수 증가
+	public void increaseViewCount() {
+		this.viewCount++;
+	}
+	
+//  수정 부분
+	public void patch(PatchBoardDto dto) {
+		this.title = dto.getTitle();
+		this.content = dto.getTitle();
+		this.boardImageUrl = dto.getBoardImageUrl();
+	}
 }

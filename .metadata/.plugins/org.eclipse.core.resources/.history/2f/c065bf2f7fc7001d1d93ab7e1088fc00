@@ -1,0 +1,23 @@
+package board.dto.response.board;
+
+import java.util.List;
+
+import board.entity.Comment;
+import board.entity.Like;
+
+// 
+public class PatchBoardResponseDto {
+	private int boardNumber;
+	private String title;
+	private String content;
+	private String boardImageUrl;
+	private String writerEmail;
+//	누구의 게시물인지 구분 되어야 함
+	private String writerProfileImageUrl;
+	private String writerNickname;
+	private String writeDate;
+	private int likeCount;
+	private List<Like> likeList;
+	private int commentCount;
+	private List<Comment> commentList;
+}

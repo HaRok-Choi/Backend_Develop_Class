@@ -5,6 +5,7 @@ import java.util.Scanner;
 import board.common.constant.HttpStatus;
 import board.controller.BoardController;
 import board.controller.UserController;
+import board.dto.request.board.PatchBoardDto;
 import board.dto.request.board.PostBoardDto;
 import board.dto.request.user.SignInDto;
 import board.dto.request.user.SignUpDto;
@@ -96,7 +97,7 @@ public class BoardApplication {
 //				컴파일 로직상 문제는 없지만 외부에서 들어오는 것은 무조건 정수로 들어오지 않을 수 있다.(그래서 예외 처리를 해줘야 한다.) 
 				int boardNumber = 0;
 				try {
-					System.out.println("게시물 번호 : ");
+					System.out.print("게시물 번호 : ");
 					boardNumber = scanner.nextInt();
 				} catch (Exception exception) {
 					exception.printStackTrace();
@@ -104,6 +105,47 @@ public class BoardApplication {
 				}
 				
 				boardController.getBoard(boardNumber);
+				break;
+				
+			case PATCH_BOARD:
+				PatchBoardDto patchBoardDto = new PatchBoardDto();
+//				GET_BOARD 부분과 마찬가지
+				try {
+					System.out.print("게시물 번호 : ");
+					String patchNumberString = scanner.nextLine();
+					patchBoardDto.setBoardNumber(Integer.parseInt(patchNumberString));
+					System.out.print("제목 : ");
+					patchBoardDto.setTitle(scanner.nextLine());
+					System.out.print("내용 : ");
+					patchBoardDto.setContent(scanner.nextLine());
+					System.out.print("이미지 : ");
+					patchBoardDto.setBoardImageUrl(scanner.nextLine());
+					System.out.print("이메일 : ");
+					patchBoardDto.setEmail(scanner.nextLine());
+				} catch (Exception exception) {
+					exception.printStackTrace();
+					continue;
+				}
+				boardController.patchBoard(patchBoardDto);
+				break;
+				
+			case DELETE_BOARD:
+//				어떤 게시물 삭제할지 알아야 됨
+				int deleteBoardNumber = 0;
+				String deleteEmail = null;
+				
+				try {
+					System.out.println("게시물 번호 : ");
+					deleteBoardNumber = Integer.parseInt(scanner.nextLine());
+					System.out.println("이메일 : ");
+					deleteEmail = scanner.nextLine();
+				} catch (Exception exception) {
+					exception.printStackTrace();
+					continue;
+				}
+				
+				boardController.deleteBoard(deleteBoardNumber, deleteEmail);
+				break;
 				
 			default:
 				System.out.println(HttpStatus.NOT_FOUND); // 잘못 입력하면 이거 뜸

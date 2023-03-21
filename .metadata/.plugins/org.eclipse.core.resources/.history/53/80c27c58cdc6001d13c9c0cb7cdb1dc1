@@ -1,0 +1,21 @@
+package board.dto.response.board;
+// 반환
+
+import java.util.List;
+
+import board.entity.Like;
+
+public class GetBoardResponseDto {
+	
+	private String title;
+	private String content;
+	private String boardImageUrl;
+	private String writerProfileImageUrl;
+	private String writerNickname;
+	private String writeDate;
+	private int likeCount;
+	private List<Like> likeList;
+	private
+	
+	
+}

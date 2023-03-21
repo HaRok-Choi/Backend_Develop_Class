@@ -27,6 +27,7 @@ public class BoardRepository {
 		if (!isExist) {
 			boardTable.add(board);
 		}
+		
 		boardTable.add(board);
 		return board;
 	}
@@ -45,6 +46,17 @@ public class BoardRepository {
 //	Service에서 쓰기 위해 만든 메서드
 	public List<Board> findBy() {
 		return boardTable;
+	}
+	
+//	삭제시키는 번호
+	public void deleteByBoardNUmber(int boardNumber) {
+		for (int index = 0; index < boardTable.size(); index++) {
+			Board board = boardTable.get(index);
+			if (board.getBoardNumber() == boardNumber) {
+				boardTable.remove(board);
+				break;
+			}
+		}
 	}
 	
 }

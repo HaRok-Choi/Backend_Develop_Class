@@ -1,0 +1,18 @@
+package board.dto.response.board;
+// 삭제부분 Dto
+public class DeleteBoardResponseDto {
+	private int boardNumber;
+	private String writerProfileImageUrl;
+	private String writernickname;
+	private String writeDate;
+	private String title;
+	private String content;
+	private String boardImageUrl;
+	private int commnetCount;
+	private int likeCount;
+	private int viewCount;
+	
+	public DeleteBoardResponseDto() {}
+	
+	
+}

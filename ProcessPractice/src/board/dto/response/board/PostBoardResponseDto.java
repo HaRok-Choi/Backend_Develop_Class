@@ -5,7 +5,7 @@ import java.util.List;
 import board.entity.Board;
 import board.entity.Comment;
 import board.entity.Like;
-
+// 글 쓰는거
 public class PostBoardResponseDto {
 	
 	private int boardNumber;

@@ -7,7 +7,8 @@ import board.entity.Board;
 import board.entity.Comment;
 import board.entity.Like;
 
-//	화면상 보여지는 부분
+// 화면상 보여지는 부분
+// 게시물 보는거
 public class GetBoardResponseDto {
 	private int boardNumber;
 	private String title;
@@ -28,7 +29,6 @@ public class GetBoardResponseDto {
 	public GetBoardResponseDto(int boardNumber, String title, String content, String boardImageUrl, String writerEmail,
 			String writerProfileImageUrl, String writerNickname, String writeDate, int likeCount, List<Like> likeList,
 			int commentCount, List<Comment> commentList) {
-		super();
 		this.boardNumber = boardNumber;
 		this.title = title;
 		this.content = content;

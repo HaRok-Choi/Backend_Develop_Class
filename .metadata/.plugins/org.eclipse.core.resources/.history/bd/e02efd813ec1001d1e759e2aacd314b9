@@ -1,6 +1,0 @@
-package trainReservation.entity;
-
-// 비용 Entity class
-public class Cost {
-	String 
-}

@@ -1,0 +1,9 @@
+package board.dto.response.board;
+
+public class PostBoardResponseDto {
+	
+	
+	
+	
+	
+}

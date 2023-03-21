@@ -6,6 +6,7 @@ import java.util.List;
 import board.entity.Board;
 
 // 화면에 보이는것들 여부
+// 게시글 이때까지 쓴거 다 나열
 public class GetBoardListResponseDto {
 	
 	private int boardNumber;
@@ -18,6 +19,8 @@ public class GetBoardListResponseDto {
 	private int commnetCount;
 	private int likeCount;
 	private int viewCount;
+	
+	public GetBoardListResponseDto() {}
 	
 	public GetBoardListResponseDto(int boardNumber, String writerProfileImageUrl, String writernickname,
 			String writeDate, String title, String content, String boardImageUrl, int commnetCount, int likeCount,
@@ -142,8 +145,9 @@ public class GetBoardListResponseDto {
 			GetBoardListResponseDto item = new GetBoardListResponseDto(board);
 			result.add(item);
 		}
-		
 		return result;
 	}
+	
+	
 	
 }

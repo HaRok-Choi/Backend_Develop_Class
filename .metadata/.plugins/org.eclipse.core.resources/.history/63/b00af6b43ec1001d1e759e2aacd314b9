@@ -1,6 +1,0 @@
-package trainReservation.entity;
-
-// 정차역 ENtity class
-public class StopStation {
-
-}

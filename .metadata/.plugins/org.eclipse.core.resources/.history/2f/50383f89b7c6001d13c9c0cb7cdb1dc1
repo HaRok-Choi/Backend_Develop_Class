@@ -1,0 +1,20 @@
+package board.dto.request.board;
+
+public class PostBoardDto {
+	
+	private String title;
+	private String content;
+	private String boardImageUrl;
+	private String writerEmail;
+	
+	public PostBoardDto() {}
+
+	public PostBoardDto(String title, String content, String boardImageUrl, String writerEmail) {
+		this.title = title;
+		this.content = content;
+		this.boardImageUrl = boardImageUrl;
+		this.writerEmail = writerEmail;
+	}
+	
+	
+}
