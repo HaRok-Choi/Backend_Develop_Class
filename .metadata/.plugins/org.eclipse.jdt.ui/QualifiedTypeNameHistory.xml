@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.Thread"/>
-    <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
-    <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
@@ -31,8 +28,6 @@
     <fullyQualifiedTypeName name="java.lang.StrictMath"/>
     <fullyQualifiedTypeName name="board.controller.UserController"/>
     <fullyQualifiedTypeName name="board.BoardApplication"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="board.dto.request.user.SignUpDto"/>
     <fullyQualifiedTypeName name="board.service.UserService"/>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
@@ -40,13 +35,10 @@
     <fullyQualifiedTypeName name="java.util.UUID"/>
     <fullyQualifiedTypeName name="board.dto.response.user.SignInResponseDto"/>
     <fullyQualifiedTypeName name="board.controller.BoardController"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="board.repository.BoardRepository"/>
     <fullyQualifiedTypeName name="board.repository.UserRepository"/>
     <fullyQualifiedTypeName name="board.dto.request.board.PostBoardDto"/>
     <fullyQualifiedTypeName name="board.dto.response.board.PostBoardResponseDto"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="trainReservation.dto.GetReservationDto"/>
     <fullyQualifiedTypeName name="board.entity.Comment"/>
     <fullyQualifiedTypeName name="board.dto.response.board.GetBoardListResponseDto"/>
@@ -56,8 +48,16 @@
     <fullyQualifiedTypeName name="board.dto.response.board.PatchBoardResponseDto"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="board.common.constant.HttpStatus"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="board.dto.response.ResponseDto"/>
     <fullyQualifiedTypeName name="board.common.constant.ResponseMessage"/>
     <fullyQualifiedTypeName name="board.dto.response.board.DeleteBoardResponseDto"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="exam.CustomerInformation"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.awt.desktop.UserSessionListener"/>
+    <fullyQualifiedTypeName name="exam.User"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

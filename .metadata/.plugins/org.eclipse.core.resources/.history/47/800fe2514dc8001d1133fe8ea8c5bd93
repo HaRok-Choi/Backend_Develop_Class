@@ -1,0 +1,28 @@
+package exam;
+
+import java.util.Scanner;
+
+public class CustomerCareApplication {
+	
+	private static CustomerInformation customerInformation = new CustomerInformation();
+	
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("이름 : ");
+		customerInformation.setName(scanner.nextLine());
+		
+		System.out.print("성별 : ");
+		customerInformation.setGender(scanner.nextLine());
+		
+		System.out.print("주소 : ");
+		customerInformation.setAddress(scanner.nextLine());
+		
+		System.out.print("전화번호 : ");
+		customerInformation.setPhoneNumber(scanner.nextLine());
+		
+		System.out.println(customerInformation.toString());
+	}
+
+}

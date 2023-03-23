@@ -1,0 +1,31 @@
+package exam;
+
+public class MainApplication {
+	public static void main(String[] args) {
+		
+		while (true) {
+			User user = new User();
+			
+			// 모두 입력
+			if (user.valid()) {
+				
+				continue;
+			}
+			
+			// 존재하는 이메일?
+			if () {
+				
+				continue;
+			}
+			
+			// 비밀번호가 서로 같은지?
+			if (userList.equals(email)) {
+				
+				continue;
+			}
+			
+			
+			
+		}
+	}
+}

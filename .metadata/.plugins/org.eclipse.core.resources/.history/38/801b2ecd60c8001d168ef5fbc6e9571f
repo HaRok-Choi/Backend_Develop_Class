@@ -1,0 +1,32 @@
+package exam;
+
+public class MainApplication {
+	public static void main(String[] args) {
+		
+		String email = null;
+		
+		while (true) {
+			User user = new User();
+			
+			if (user.validate()) {
+				System.out.println("모두 입력하세요.");
+				continue;
+			}
+			
+			if (user.getEmail().equals(email)) {
+				System.out.println("이메일이 존재합니다.");
+				continue;
+			}
+			
+			if (!user.getPassword().equals(user.getPasswordCheck())) {
+				System.out.println("비밀번호가 서로 다릅니다.");
+				continue;
+			}
+			
+			user.userList.add(user);
+			System.out.println(user.toString());
+			break;
+			
+		}
+	}
+}

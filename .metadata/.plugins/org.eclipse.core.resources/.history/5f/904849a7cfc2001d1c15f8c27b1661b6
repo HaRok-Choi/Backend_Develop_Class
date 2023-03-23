@@ -1,9 +1,0 @@
-package trainReservation.dto;
-
-public class PostReservationDto {
-	
-	private String trainNumber;
-	private List<String> seats;
-	
-	
-}
