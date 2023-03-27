@@ -1,5 +1,0 @@
-package trainReservation.dto;
-
-public class GetReservationDto {
-
-}
