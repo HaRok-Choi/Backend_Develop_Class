@@ -1,9 +1,0 @@
-package board.common.constant;
-
-public interface ResponseMessage {
-	public static final String SUCCESS = "Success";
-	
-	public static final String EXIST_EMAIL = "Existed Email";
-	
-	publi static final String PASSWORD_NOT_MATCH = "Password Not Match"
-}

@@ -1,5 +1,0 @@
-package board.dto.response.board;
-// 반환
-public class GetBoardResponseDto {
-
-}

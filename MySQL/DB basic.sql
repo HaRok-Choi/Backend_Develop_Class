@@ -124,3 +124,253 @@ SELECT C.name FROM Custom AS C;
 -- 중복 제거(DISTINCT)
 SELECT DISTINCT name FROM Custom;
 
+-- 연산자
+# 비교 연산
+# BETWEEN a AND b
+# a 보다 크거나 같으면서 b 보다 작거나 같은 값을 찾음
+SELECT * FROM Custom WHERE age BETWEEN 10 AND 20;
+
+-- IN()
+# 인수로 전달된 값과 동일한 값이 하나라도 존재한다면 true를 반환
+SELECT * FROM Custom WHERE name IN ('Michle', 'harok', 'joe');
+
+# SELECT * FROM Custom WHERE name = 'Michle' OR name = 'harok' OR name = 'joe'; 위에꺼랑 같다.
+
+-- IS
+# 비교 대상이 Boolean 형태일 때 사용하는 비교 연산자
+SELECT * FROM Custom WHERE accept_marketing IS true;
+
+-- IS NULL
+# 비교 대상이 Null이면 true를 반환
+SELECT * FROM Custom WHERE email IS NULL;
+
+-- LIKE
+# 문자열의 패턴을 비교하여 동일한 패턴을 가지고 있는 문자열이면 true를 반환
+
+# 와일드카드
+# % : 0개 이상의 패턴(많이 쓰임)
+# _ : 1개의 패턴, 아주 정확할때 사용(많이 사용안함)
+SELECT * FROM Custom WHERE email LIKE '%gmail%';
+
+-- ★★★ Constraint (제약조건) ★★★
+# RDBMS에서 삽입, 수정, 삭제에 대해서 무결성을 보장해주는 조건
+
+-- NOT NULL
+# 입력 혹은 수정 작업에 있어서 해당 필드에 Null이 올 수 없도록 하는 제약조건
+
+# Create
+CREATE TABLE NotnullTable1 (
+	notnull_field INT NOT NULL
+);
+
+# ALTER
+# ALTER로 NOT NULL 제약조건을 추가할 땐 원래 존재하는 레코드에서 해당 필드의 데이터가 Null이 존재하면 안됨
+CREATE TABLE NotnullTable (
+	notnull_field INT NOT NULL
+); 
+
+ALTER TABLE NotnullTable1
+MODIFY COLUMN notnull_field INT NOT NULL;
+
+-- Default
+# 입력 작업에서 해당 필드의 값이 들어오지 않으면 기본값으로 지정해 주는 제약조건
+
+# CREATE
+CREATE TABLE defaultTable1 (
+	default_field INT DEFAULT 1
+);
+
+# ALTER
+CREATE TABLE defaultTable2 (
+	default_field INT DEFAULT 1
+);
+
+ALTER TABLE defaultTable2
+MODIFY COLUMN default_field INT DEFAULT 1;
+
+-- UNIQUE
+# 삽입, 수정 작업에서 해당 제약조건이 걸려있는 필드의 데이터에대해 중복을 허용하지 않는 제약조건
+
+# CREATE
+CREATE TABLE Unique_Table1 (
+	unique_field INT UNIQUE
+);
+
+CREATE TABLE Unique_Table2 (
+	unique_field INT,
+    CONSTRAINT unique_key_1 UNIQUE (unique_field)
+);
+
+# ALTER
+CREATE TABLE Unique_Table3 (
+	unique_field INT UNIQUE
+);
+
+ALTER TABLE Unique_Table3 
+MODIFY unique_field INT UNIQUE;
+
+CREATE TABLE Unique_Table4 (
+	unique_field INT UNIQUE
+);
+
+ALTER TABLE Unique_Table4
+ADD CONSTRAINT unique_key_1 UNIQUE (unique_field);
+
+-- PRIMARY KEY
+# 기본키에 대한 제약조건, NOT NULL / UNIQUE가 포함 되어 있음
+# 삽입, 수정시에 NULL을 포함할 수 없음, 중복된 데이터를 포함할 수 없음
+
+# CREATE
+CREATE TABLE primary_table1 (
+	primary_field INT PRIMARY KEY
+);
+
+CREATE TABLE primary_table2 (
+	primary_field INT,
+    CONSTRAINT primary_key_1
+    PRIMARY KEY (primary_field)
+);
+
+# ALTER
+CREATE TABLE primary_table3 (
+	primary_field INT
+);
+
+ALTER TABLE primary_table3
+MODIFY COLUMN primary_field INT PRIMARY KEY;
+
+CREATE TABLE primary_tabl4 (
+	primary_field INT
+);
+
+ALTER TABLE primary_table4
+ADD CONSTRAINT primary_key_1 PRIMARY KEY (primary_field);
+
+-- FORIEGN KEY
+# 참조제약조건, 해당 테이블을 해당 필드를 기준으로 외부 테이블의 외부 필드를 참조하도록 하는 제약조건
+# 해당 제약조건이 걸려있는 필드의 경우 참조하는 테이블의 참조필드에 데이터가 존재하는 데이터만 삽입 할 수 있음
+
+# CREATE
+CREATE TABLE Referenced_Table (
+	primary_key INT PRIMARY KEY
+);
+
+# CREATE 시에 참조 제약조건을 추가할 땐 선행적으로 참조할 테이블과 필드가 존재해야하고 참조할 필드가
+# PRIMARY KEY 혹은 UNIQUE 제약조건이 지정되어 있어야 함
+# 참조 제약조건이 걸리는 필드는 참조할 필드의 데이터타입과 일치해야함
+CREATE TABLE Foreign_Table1 (
+	foreign_field INT,
+    CONSTRAINT foreign_key_1 FOREIGN KEY (foreign_field)
+    REFERENCES Referenced_Table (primary_key)
+);
+
+# ALTER
+CREATE TABLE Foreign_Table2 (
+	foreign_field INT
+);
+
+ALTER TABLE Foreign_Table2
+ADD CONSTRAINT foreign_key_1
+FOREIGN KEY (foreign_field) REFERENCES Referenced_Table (primary_key);
+
+---------------------------------------------------------------------------------
+
+CREATE TABLE Room (
+	room_number VARCHAR(4) PRIMARY KEY,
+    room_type VARCHAR(20) NOT NULL,
+    room_amount INT NOT NULL,
+    custom_id INT,
+    # ↓ 현재는 볼려는 용도로 만들어 놓은 것(관계가 맞지 않음)
+    CONSTRAINT Room_Foreign_Key
+    FOREIGN KEY (user_id)
+    REFERENCES Custom (id)
+);
+
+INSERT INTO Room VALUES ('1001', '비즈니스', 200, 1);
+INSERT INTO Room VALUES ('1203', 'VIP', 1000, 10);
+INSERT INTO Room VALUES ('1801', 'VIP', 1000, 12);
+
+INSERT INTO Room VALUES ('1002', '비즈니스', 200, 1);
+INSERT INTO Room VALUES ('1204', 'VIP', 1000, 10);
+INSERT INTO Room VALUES ('1802', 'VIP', 1000, 12);
+
+INSERT INTO Room VALUES ('1003', '비즈니스', 200, null);
+INSERT INTO Room VALUES ('1205', 'VIP', 1000, null);
+INSERT INTO Room VALUES ('1803', 'VIP', 1000, null);
+
+SELECT * FROM Room;
+
+-- Join
+# 여러개의 테이블에서 관계로 연결되어 있는 표현을 하나로 검색하도록 해주는 쿼리
+
+## Inner Join
+# FROM 첫번째테이블 INNER JOIN 두번째테이블 ON 조건
+# FROM 첫번째테이블 JOIN 두번째테이블 ON 조건
+# MySQL 경우 : FROM 첫번째테이블, 두번째테이블 WHERE 조건
+
+SELECT R.room_number AS '방번호', C.name AS '고객이름'
+FROM Room R INNER JOIN Custom C
+ON C.id = R.custom_id;
+
+SELECT *
+FROM Room JOIN Custom;
+
+SELECT *
+FROM Room, Custom
+WHERE Room.custom_id = Custom.id;
+
+## LEFT JOIN
+# FROM 첫번째테이블 LEFT JOIN 두번째테이블 ON 조건
+SELECT *
+FROM Room LEFT JOIN Custom
+ON Room.Custom_id = Custom.id;
+
+INSERT INTO Custom VALUES (20, 'David', 'David@gmail.com', 30, 'New york', 1);
+## RIGHT JOIN
+# FROM 첫번째테이블 RIGHT JOIN 두번째테이블 ON 조건
+SELECT *
+FROM Room RIGHT JOIN Custom
+ON Room.Custom_id = Custom.id;
+
+-- Sub Query
+# 복잡한 Join 문을 조금 더 간결하게 사용할 수 있도록 해주는 쿼리
+# SELECT, INSERT, UPDATE, DELETE, SET, DO 에서 사용가능
+# FROM, WHERE 절에서 사용가능
+
+# WHERE절 사용
+SELECT *
+FROM Room
+WHERE custom_id IN (
+	SELECT id
+    FROM Custom
+    WHERE name = 'Michle'
+);
+
+# ex) IN 연산 + LIKE -> 이럴 때 서브쿼리를 써 줌.
+SELECT *
+FROM Custom
+WHERE id IN (
+	SELECT id
+    FROM Custom
+    WHERE name LIKE 'M%'
+    OR name LIKE 'D%'
+);
+
+# FROM절 사용
+SELECT CustomId
+FROM ( # 별칭을 무조건 지정해줘야 한다. 반환되는 필드명으로 select자리에 넣어줘야 된다.
+	SELECT id AS CustomId, email AS CustomEmail
+    FROM Custom
+) C;
+
+## ORDER BY (정렬)
+# 특정 필드를 기준으로 오름차순, 내림차순 정렬하여 결과를 반환
+SELECT * FROM Namgu
+ORDER BY 세대수 DESC;
+
+SELECT * FROM Namgu
+ORDER BY 통 DESC, 반 ASC;
+
+
+
+

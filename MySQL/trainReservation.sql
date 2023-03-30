@@ -4,8 +4,8 @@ USE train_reservation;
 
 -- 가격 테이블 생성
 CREATE TABLE Cost (
-	departure_station VARCHAR(50) NOT NULL,
-    arrival_station VARCHAR(50) NOT NULL,
+	departure_station INT NOT NULL,
+    arrival_station INT NOT NULL,
     amount INT NOT NULL
 );
 
@@ -26,12 +26,12 @@ CREATE TABLE Train ( # 주
 CREATE TABLE Station ( # 주
 	station_number INT AUTO_INCREMENT PRIMARY KEY,
 	station_name VARCHAR(50) NOT NULL,
-    address TEXT NOT NULL UNIQUE,
+    address VARCHAR(500) NOT NULL UNIQUE,
     tel_number VARCHAR(15) NOT NULL UNIQUE
 );
 
 CREATE TABLE STOP_STATION ( # 테이블, 필드명은 웬만하면 단수형태
-	station_name INT NOT NULL,
+	station_number INT NOT NULL,
     train_number VARCHAR(10) NOT NULL,
     departure_time TIME NOT NULL,
     arrival_time TIME NOT NULL
@@ -45,4 +45,30 @@ CREATE TABLE SEAT (
     train_type VARCHAR(10)
 );
 
+ALTER TABLE Cost
+ADD CONSTRAINT cost_primary_key
+PRIMARY KEY (departure_station, arrival_station);
 
+ALTER TABLE Cost
+ADD CONSTRAINT cost_foreign_key_1
+FOREIGN KEY (departure_station)
+REFERENCES Station (station_number);
+
+ALTER TABLE Cost
+ADD CONSTRAINT cost_foreign_key_2
+FOREIGN KEY (arrival_station)
+REFERENCES Station (station_number);
+
+ALTER TABLE STOP_STATION
+ADD CONSTRAINT stop_station_primary_key
+PRIMARY KEY (station_number, train_number);
+
+ALTER TABLE STOP_STATION
+ADD CONSTRAINT stop_station_primary_key_1
+FOREIGN KEY (station_number)
+REFERENCES Station (station_number);
+
+ALTER TABLE STOP_STATION
+ADD CONSTRAINT stop_station_foreign_key_2
+FOREIGN KEY (train_number)
+REFERENCES TRAIN (train_number);
