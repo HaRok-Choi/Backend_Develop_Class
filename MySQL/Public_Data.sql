@@ -32,4 +32,21 @@ SELECT 구분, 세대수, 인구수, 통, 반 FROM Namgu WHERE 통 >= 20 OR 반 
 # Namgu 테이블에서 인구수가 1만명 이상이면서 18세이상 인구수 1.2만명 이하이거나 반이 100이하인 레코드의 전체 필드 검색
 SELECT * FROM Namgu WHERE 인구수 >= 10000 AND (18세이상인구수 <= 12000 OR 반 <= 100);
 
- SELECT * FROM Namgu WHERE 인구수 >= 10000 AND 18세이상인구수 <= 12000 OR 반 <= 100;
+SELECT * FROM Namgu WHERE 인구수 >= 10000 AND 18세이상인구수 <= 12000 OR 반 <= 100;
+ 
+ -- 내장함수
+SELECT 면적, count(면적), max(세대수), min(세대수)
+FROM Namgu
+GROUP BY 면적;
+# 면적을 기준으로 그룹화하여 나머지의 값들을 보여줌
+
+# Group By 되지 않는 필드는 Having에 사용 불가능
+SELECT 면적, count(면적), max(세대수), min(세대수)
+FROM Namgu
+GROUP BY 면적 
+HAVING max(세대수) >= 5000 -- 많이 쓰이지는 않음
+ORDER BY 면적;
+
+SELECT * FROM Namgu
+
+ 

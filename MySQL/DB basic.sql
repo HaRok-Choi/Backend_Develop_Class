@@ -371,6 +371,58 @@ ORDER BY 세대수 DESC;
 SELECT * FROM Namgu
 ORDER BY 통 DESC, 반 ASC;
 
+-- VIEW
+# 복잡한 쿼리문(SELECT)을 미리 작성해두고 재사용 할 수 있도록 해주는 읽기전용의 가상 테이블
+# 읽기 전용이기 때문에 테이블의 삽입, 수정, 삭제 작업의 제약을 걸 때 사용 할 수 있음
 
+# CREATE VIEW 뷰이름 AS
+# SELECT ~~
 
+CREATE VIEW Join_result AS
+SELECT R.room_number AS '방번호', C.name AS '고객이름'
+FROM Room R INNER JOIN Custom C
+ON C.id = R.custom_id;
 
+SELECT * FROM Join_result
+WHERE 방번호 = 1203;
+
+# ALTER VIEW 뷰이름 AS
+# SELECT ~~
+ALTER VIEW Join_Result AS
+SELECT R.room_number AS '방번호', C.name AS '고객이름', C.email AS '고객이메일'
+FROM Room R INNER JOIN Custom C
+ON C.id = R.custom_id;
+
+SELECT * FROM Join_Result;
+
+# DROP TABLE 뷰이름
+DROP VIEW Join_Result;
+
+-------------------------------------------
+# 시험
+-- 시험
+-- 데이터사전 : 메타데이터 같은것들, 임의의 만들어진 테이블을 보는것
+-- 작성되어있는 테이블을 볼려면 어떤사전을 검색해야하는가? table 사전 검색
+SHOW INDEXES FROM Custom;
+SELECT * FROM mysql.user;
+-------------------------------------------
+
+-- INDEX
+# 테이블의 검색 속도를 향상 시켜주는 기능을 담당하는 요소
+# 인덱스가 적용되어있는 필드의 경우 해당 필드를 조건으로 검색을 시도할 때 검색속도가 향상됨
+# 인덱스가 적용되어 있는 필드를 수정 할 경우 인덱스도 함께 변경되어 검색 속도에 영향을 미칠 수가 있음
+
+# CREATE INDEX 인덱스명
+# ON 테이블명 (필드명, ...);
+CREATE INDEX seadaesu_index
+ON Namgu (세대수);
+-- ↑ 오로지 세대수만을 검색했을때
+
+# SHOW INDEX FROM 테이블명
+SHOW INDEX FROM Namgu;
+
+CREATE INDEX seadaesu_index_2
+ON Namgu (세대수, 인구수, 통); # 자주 사용하는거를 앞에 다 두는것이 좋음
+
+CREATE UNIQUE INDEX seadaesu_unique_index
+ON Namgu (세대수);
