@@ -308,7 +308,7 @@ SELECT * FROM Room;
 # FROM 첫번째테이블 JOIN 두번째테이블 ON 조건
 # MySQL 경우 : FROM 첫번째테이블, 두번째테이블 WHERE 조건
 
-SELECT R.room_number AS '방번호', C.name AS '고객이름'
+SELECT * -- R.room_number AS '방번호', C.name AS '고객이름'
 FROM Room R INNER JOIN Custom C
 ON C.id = R.custom_id;
 
@@ -426,3 +426,29 @@ ON Namgu (세대수, 인구수, 통); # 자주 사용하는거를 앞에 다 두
 
 CREATE UNIQUE INDEX seadaesu_unique_index
 ON Namgu (세대수);
+
+----------------------------------------------------------------------------
+
+-- DCL (많이 안쓰임)
+# 권한 제어 및 트랜잭션 제어를 담당하는 쿼리문의 집합
+
+# 사용자 권한
+CREATE USER 'Developer_user'@'%' IDENTIFIED BY '1234';
+
+-- GRANT
+# 사용자에게 권한을 부여하는 쿼리문
+# GRANT 권한1, ... ON 데이터베이스.테이블 TO 사용자이름@호스트;
+GRANT CREATE, INSERT, UPDATE, SELECT, DELETE
+ON HOTEL.* TO 'Developer_user'@'%';
+
+-- REVOKE
+# 사용자로부터 권한을 회수하는 쿼리문
+# REVOKE 권한1, ... ON 데이터베이스.테이블 FROM 사용자이름@호스트;
+REVOKE CREATE ON HOTEL.* FROM 'Developer_user'@'%';
+
+-- COMMIT
+# 트랜잭션을 영구적으로 반영하는 쿼리문
+COMMIT;
+
+-- ROLLBACK
+# 트랜잭션을 취소하고 되돌려 놓는 쿼리문
