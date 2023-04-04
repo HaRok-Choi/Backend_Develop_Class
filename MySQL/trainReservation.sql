@@ -51,8 +51,8 @@ PRIMARY KEY (departure_station, arrival_station);
 
 ALTER TABLE Cost
 ADD CONSTRAINT cost_foreign_key_1
-FOREIGN KEY (departure_station)
-REFERENCES Station (station_number);
+FOREIGN KEY (departure_station) -- 참조하는
+REFERENCES Station (station_number); -- 참조되는
 
 ALTER TABLE Cost
 ADD CONSTRAINT cost_foreign_key_2

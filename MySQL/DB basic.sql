@@ -80,8 +80,8 @@ SELECT * FROM Custom;
 
 # 모든 필드에 값을 넣을 때:
 # INSERT INTO 테이블명
-# VALUSE (데이터1, 데이터2);
-INSERT INTO custom VALUES(10, 'joe', 're@re', 30, '부산', true);
+# VALUES (데이터1, 데이터2);
+INSERT INTO Custom VALUES(10, 'joe', 're@re', 30, '부산', true);
 # ↓ 타입이 같으면 순서를 바꿔도 무방하지만 값이 이상하게 들어갈 수도 있음
 INSERT INTO Custom VALUES(11, 'ew@ew', 'Harok', 26, 'busan', true);
 # ↓ 모든 값을 다 넣어줘야 함
@@ -403,7 +403,8 @@ DROP VIEW Join_Result;
 -- 시험
 -- 데이터사전 : 메타데이터 같은것들, 임의의 만들어진 테이블을 보는것
 -- 작성되어있는 테이블을 볼려면 어떤사전을 검색해야하는가? table 사전 검색
-SHOW INDEXES FROM Custom;
+SHOW TABLES;
+SHOW INDEX FROM Custom;
 SELECT * FROM mysql.user;
 -------------------------------------------
 
@@ -422,7 +423,7 @@ ON Namgu (세대수);
 SHOW INDEX FROM Namgu;
 
 CREATE INDEX seadaesu_index_2
-ON Namgu (세대수, 인구수, 통); # 자주 사용하는거를 앞에 다 두는것이 좋음
+ON Namgu (세대수, 인구수, 통); # 자주 사용하는거를 앞에다 두는것이 좋음
 
 CREATE UNIQUE INDEX seadaesu_unique_index
 ON Namgu (세대수);
