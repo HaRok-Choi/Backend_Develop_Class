@@ -1,6 +1,0 @@
-package board.dto.request.board;
-
-public class PatchBoardDto {
-	private int boardNumber;
-	private String title;
-}

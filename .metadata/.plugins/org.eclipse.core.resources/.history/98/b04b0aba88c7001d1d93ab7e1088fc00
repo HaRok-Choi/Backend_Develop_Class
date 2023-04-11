@@ -1,5 +1,0 @@
-package board.dto.response.board;
-// 삭제부분 Dto
-public class DeleteBoardResponseDto {
-
-}
