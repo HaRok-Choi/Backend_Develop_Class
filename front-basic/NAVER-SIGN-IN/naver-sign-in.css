@@ -364,3 +364,19 @@ input {
 .footer-item span {
   vertical-align: top;
 }
+
+.sign-in-error {
+  position: relative;
+  min-height: 34px;
+  margin: 24px 0 -24px;
+  padding-right: 40px;
+}
+
+.error-message {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.5px;
+  color: #ff003e;
+  vertical-align: middle;
+}
