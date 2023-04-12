@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>네이버 : 로그인</title>
     <link rel="stylesheet" href="./naver-sign-in.css" />
+    <script>
+      // ↓ 화살표 함수
+      const onSubmitHandler = () => {
+        const id = document.getElementById("id").value;
+        // 아래의 바디중 요소 하나(id)를 선택할 수 있고 값을 가져올 수 있음
+        // id로 하는게 가장 정확함
+        if (!id.trim()) {
+          document.getElementById("sign-in-error").style.display = "block";
+          return;
+        }
+        document.getElementById("sign-in-error").style.display = "none";
+        const form = document.getElementById("form");
+        form.submit();
+      };
+    </script>
   </head>
   <body>
     <!--* Header -->
@@ -27,7 +42,11 @@
       <div class="content">
         <!--# 로그인 wrapper -->
         <div class="sign-in-wrapper">
-          <form action="http://nid.naver.com/nidlogin.login" method="POST">
+          <form
+            id="form"
+            action="http://nid.naver.com/nidlogin.login"
+            method="POST"
+          >
             <ul class="panel-wrapper">
               <li class="panel-item">
                 <div class="panel-inner">
@@ -72,9 +91,23 @@
                     </div>
                     <div class="ip-check"></div>
                   </div>
+                  <!--# Sign In Error -->
+                  <div
+                    id="sign-in-error"
+                    class="sign-in-error"
+                    style="display: none"
+                  >
+                    <div class="error-message">
+                      <strong>아이디</strong>를 입력하세요.
+                    </div>
+                  </div>
                   <!--# Sign In Button wrapper -->
                   <div class="sign-in-button-wrapper">
-                    <button type="submit" class="sign-in-button">
+                    <button
+                      type="button"
+                      class="sign-in-button"
+                      onclick="onSubmitHandler();"
+                    >
                       <span class="button-text">로그인</span>
                     </button>
                   </div>
