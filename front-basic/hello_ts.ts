@@ -52,7 +52,7 @@ const object3: Object3 = { prop1: 'prop1', prop2: 26 };
 //@ or연산자를 통해서 변수에 대한 타입을 여러개를 받을 수 있다.
 //const object3: Object3 | null = null;
 
-//# 객체 타입을 합칠 수 있다.
+//@ 객체 타입을 합칠 수 있다.
 interface Object4 {
     prop3: string;
     prop4: number;
@@ -61,3 +61,11 @@ interface Object4 {
 //@ 타입을 동시에 가지고 있어야한다.
 const object4: Object3 & Object4 = { prop1: 'prop1', prop2: 26, prop3: 'prop1', prop4: 26 }
 
+//# 4. enum
+enum Fruits {
+    APPLE = '사과',
+    BANANA = '바나나',
+    MELON = '메론'
+}
+const fruit: Fruits = Fruits.APPLE;
+console.log(fruit);
