@@ -1,5 +1,6 @@
 package com.harok.firstproject.controller;
 
+import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.harok.firstproject.dto.request.ExampleDto;
+import com.harok.firstproject.dto.response.ExampleResponseDto;
 
 class ParamDto {
     private String data1;
@@ -121,5 +125,21 @@ public class RestApiController {
         @RequestBody ParamDto dto
     ) {
         return ResponseEntity.status(408).body(dto);
+    }
+
+    @PostMapping("lombok")
+    public ResponseEntity<ExampleResponseDto> lombok(
+        //@ ↓ 적용 시켜줘야 됨
+        @Valid
+        @RequestBody ExampleDto requestBody
+    ) {
+        String data1 = requestBody.getParameter1();
+        String data2 = requestBody.getParameter2();
+        String data3 = requestBody.getParameter3();
+
+        ExampleResponseDto responseData = ExampleResponseDto.builder().data1(data1).build();
+        //@ 멤버변수에 값을 넣을 수 있는 것
+
+        return ResponseEntity.status(200).body(responseData);
     }
 }
