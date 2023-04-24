@@ -1,6 +1,8 @@
 package com.harok.firstproject.controller;
 
 import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.harok.firstproject.dto.request.ExampleDto;
 import com.harok.firstproject.dto.response.ExampleResponseDto;
+import com.harok.firstproject.service.implement.RestApiServiceImplement;
 
 class ParamDto {
     private String data1;
@@ -46,7 +49,16 @@ class ParamDto {
 @RequestMapping(value = "api")
 
 public class RestApiController {
-    
+
+    @Autowired
+    //@ ↑ Spring이 알아서 읽어오고 적용시켜줌 (아래와 같이 쓸려면 @Autowired 무조건 걸어줘야 됨)
+    private RestApiServiceImplement restApiService;
+
+    //@ 생성자는 @Autowired를 굳이 안걸어도 된다.
+    // public RestApiController(RestApiServiceImplement restApiService) {
+    //     this.restApiService=restApiService;
+    // }
+
     //@ ↓ 가독성이 떨어짐
     @RequestMapping(method = {RequestMethod.GET}, value = "hello2")
     public String hello2() {
@@ -58,7 +70,7 @@ public class RestApiController {
     //@ @RequestMapping(method= {RequestMethod.GET}, value="get-method")와 똑같다.
     @GetMapping("get-method")
     public String getMethod() {
-        return "Response of Get Request";
+        return restApiService.getMethod();
     }
 
     //@ Post Method @PostMapping
@@ -67,7 +79,7 @@ public class RestApiController {
     //@ 실제 작성을 하기위한 용도임
     @PostMapping("post-method")
     public String postMethod() {
-        return "Response of Post Request";  
+        return restApiService.postMethod(); 
     }
 
     //@ Patch Method @PatchMapping
@@ -75,7 +87,7 @@ public class RestApiController {
     //@ @RequestMapping(method= {RequestMethod.PATCH}, value="patch-method")와 똑같다.
     @PatchMapping("patch-method")
     public String patchMethod() {
-        return "Response of Patch Request"; 
+        return restApiService.patchMethod(); 
     }
 
     //@ Delete Method @DeleteMapping
@@ -83,7 +95,7 @@ public class RestApiController {
     //@ @RequestMapping(method= {RequestMethod.DELETE}, value="delete-method")와 똑같다.
     @DeleteMapping("delete-method")
     public String deleteMethod() {
-        return "Response of Delete Request"; 
+        return restApiService.deleteMethod(); 
     } 
 
     //@ @PathVariable()로 Get, Delete Method에서 데이터 받기
