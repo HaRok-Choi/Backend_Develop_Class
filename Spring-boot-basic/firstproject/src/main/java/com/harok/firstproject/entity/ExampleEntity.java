@@ -8,16 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "Example") //@ Example의 이름을 써야 된다.
 @Table(name = "Example")
 public class ExampleEntity {
-    //@ java네이밍 규칙은 카멜케이스, db테이블에는 (_소문자) 해야됨.
+    //@ java네이밍 규칙은 카멜케이스, db테이블에는 (_소문자) 해야됨. (헷갈림 주의!)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "example_column1", nullable = false, unique = true)
