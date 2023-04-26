@@ -1,8 +1,12 @@
 package com.harok.board.service;
 
-import org.springframework.stereotype.Service;
+import org.springframework.http.ResponseEntity;
 
-@Service
+import com.harok.board.dto.request.user.PostUserRequestDto;
+import com.harok.board.dto.response.ResponseDto;
+
 public interface UserService {
     
+    public ResponseEntity<ResponseDto> postUser(PostUserRequestDto dto);
+
 }
