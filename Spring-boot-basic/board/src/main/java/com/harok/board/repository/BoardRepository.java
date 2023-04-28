@@ -7,5 +7,7 @@ import com.harok.board.entity.BoardEntity;
 
 @Repository
 public interface BoardRepository extends JpaRepository<BoardEntity, Integer>{
-    
+
+    public BoardEntity findByBoardNumber(int boardNumber);
+
 }

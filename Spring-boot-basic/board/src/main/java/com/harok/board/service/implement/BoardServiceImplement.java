@@ -1,17 +1,25 @@
 package com.harok.board.service.implement;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.harok.board.common.util.CustomResponse;
 import com.harok.board.dto.request.board.PatchBoardRequestDto;
 import com.harok.board.dto.request.board.PostBoardRequestDto;
 import com.harok.board.dto.response.ResponseDto;
 import com.harok.board.dto.response.board.GetBoardListResponseDto;
 import com.harok.board.dto.response.board.GetBoardResponseDto;
 import com.harok.board.entity.BoardEntity;
+import com.harok.board.entity.CommentEntity;
+import com.harok.board.entity.LikeyEntity;
+import com.harok.board.entity.UserEntity;
 import com.harok.board.repository.BoardRepository;
+import com.harok.board.repository.CommentRepository;
+import com.harok.board.repository.LikeyRepository;
 import com.harok.board.repository.UserRepository;
 import com.harok.board.service.BoardService;
 
@@ -20,11 +28,20 @@ public class BoardServiceImplement implements BoardService {
 
     private UserRepository userRepository;
     private BoardRepository boardRepository;
+    private CommentRepository commentRepository;
+    private LikeyRepository likeyRepository;
 
     @Autowired
-    public BoardServiceImplement(UserRepository userRepository, BoardRepository boardRepository) {
+    public BoardServiceImplement(
+        UserRepository userRepository, 
+        BoardRepository boardRepository,
+        CommentRepository commentRepository,
+        LikeyRepository likeyRepository
+        ) {
         this.userRepository=userRepository;
         this.boardRepository=boardRepository;
+        this.commentRepository=commentRepository;
+        this.likeyRepository=likeyRepository;
     } 
 
     @Override
@@ -59,9 +76,35 @@ public class BoardServiceImplement implements BoardService {
     }
 
     @Override
-    public ResponseEntity<? super GetBoardResponseDto> getBoard(Integer BoardNumber) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getBoard'");
+    public ResponseEntity<? super GetBoardResponseDto> getBoard(Integer boardNumber) {
+       
+        GetBoardResponseDto body = null;
+
+        try {
+
+            if (boardNumber == null) return CustomResponse.validationFailed();
+           
+            //# 존재하지 않는 게시물 번호
+            BoardEntity boardEntity = boardRepository.findByBoardNumber(boardNumber);
+            if (boardEntity == null) return CustomResponse.notExistBoardNumber();
+
+            int viewCount = boardEntity.getViewCount();
+            boardEntity.setViewCount(++viewCount);
+            boardRepository.save(boardEntity);
+
+            String boardWriterEmail = boardEntity.getWriterEmail();
+            UserEntity userEntity = userRepository.findByEmail(boardWriterEmail);
+            List<CommentEntity> commentEntities = commentRepository.findByBoardNumber(boardNumber);
+            List<LikeyEntity> likeyEntities = likeyRepository.findByBoardNumber(boardNumber);
+
+            body = new GetBoardResponseDto(boardEntity, userEntity, commentEntities, likeyEntities);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return CustomResponse.databaseError();
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(body);
     }
 
     @Override
@@ -78,8 +121,38 @@ public class BoardServiceImplement implements BoardService {
 
     @Override
     public ResponseEntity<ResponseDto> patchBoard(PatchBoardRequestDto dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'patchBoard'");
+        
+        int boardNumber = dto.getBoardNumber();
+        String userEmail = dto.getUserEmail();
+        String boardTitle = dto.getBoardTitle();
+        String boardContent = dto.getBoardContent();
+        String boardImageUrl = dto.getBoardImageUrl();
+
+        try {
+            //# 1. 존재하지 않는 게시물 번호 반환
+            BoardEntity boardEntity = boardRepository.findByBoardNumber(boardNumber);
+            if (boardEntity == null) return CustomResponse.notExistBoardNumber();
+
+            //# 2. 존재하지 않는 유저 이메일 반환
+            boolean existedUserEmail = userRepository.existsByEmail(userEmail);
+            if (!existedUserEmail) return CustomResponse.notExistUserEmail();
+
+            //# 3. 권한 없음
+            boolean equalWriter = boardEntity.getWriterEmail().equals(userEmail);
+            if (!equalWriter) return CustomResponse.noPermissions();
+
+            boardEntity.setTitle(boardTitle);
+            boardEntity.setContent(boardContent);
+            boardEntity.setBoardImageUrl(boardImageUrl);
+
+            boardRepository.save(boardEntity);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return CustomResponse.databaseError();
+        }
+
+        return CustomResponse.success();
     }
 
     @Override
