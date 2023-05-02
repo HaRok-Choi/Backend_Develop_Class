@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.harok.board.entity.LikeyEntity;
 import com.harok.board.entity.primaryKey.LikeyPk;
@@ -13,5 +14,8 @@ import com.harok.board.entity.primaryKey.LikeyPk;
 public interface LikeyRepository extends JpaRepository<LikeyEntity, LikeyPk>{
     
     List<LikeyEntity> findByBoardNumber(int boardNumber);
+
+    @Transactional
+    void deleteByBoardNumber(int boardNumber);
 
 }

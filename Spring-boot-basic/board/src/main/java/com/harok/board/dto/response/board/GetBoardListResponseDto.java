@@ -1,8 +1,10 @@
 package com.harok.board.dto.response.board;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.harok.board.dto.response.ResponseDto;
+import com.harok.board.entity.resultSet.BoardListResultSet;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,10 +13,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class GetBoardListResponseDto extends ResponseDto {
     private List<BoardSummary> boardList;
+
+    public GetBoardListResponseDto(List<BoardListResultSet> resultSet) {
+        super("SU", "Success");
+
+        List<BoardSummary> boardList = new ArrayList<>();
+
+        for (BoardListResultSet result : resultSet) {
+            BoardSummary boardSummary = new BoardSummary(result);
+            boardList.add(boardSummary);
+        }
+
+        this.boardList = boardList;
+    }
 }
 
 @Getter
@@ -33,4 +47,18 @@ class BoardSummary {
     private String boardWriterProfileImageUrl;
     private int commentCount;
     private int likeCount;
+
+    public BoardSummary(BoardListResultSet resultSet) {
+        this.boardNumber=resultSet.getBoardNumber();
+        this.boardTitle=resultSet.getBoardTitle();
+        this.boardContent=resultSet.getBoardContent();
+        this.boardImageUrl=resultSet.getBoardImageUrl();
+        this.boardWriteDatetime=resultSet.getBoardWriteDatetime();
+        this.viewCount=resultSet.getViewCount(); 
+        this.boardWrtierEmail=resultSet.getBoardWriterEmail();
+        this.boardWriterNickname=resultSet.getBoardWriterNickname();
+        this.boardWriterProfileImageUrl=resultSet.getBoardWriterProfileImageUrl();
+        this.commentCount=resultSet.getCommentCount();
+        this.likeCount=resultSet.getLikeCount();
+    }
 }
