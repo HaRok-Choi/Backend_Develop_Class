@@ -195,6 +195,7 @@ public class BoardServiceImplement implements BoardService {
             commentRepository.deleteByBoardNumber(boardNumber);
             boardRepository.delete(boardEntity);
             //@ 지금 같이 위와 해도 에러가 뜸(트랜잭션 자체를 건드리는건 안좋음)
+            //@ 그래서 Repository부분에 @Transactional을 추가해주어야 한다.
           
         } catch (Exception exception) {
             exception.printStackTrace();
