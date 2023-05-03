@@ -1,0 +1,45 @@
+package com.harok.firstproject.provider;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
+@Component
+public class JwtTokenProvider {
+    //@ 컴포넌트 등록이 됐기에 autowired를 통해 IoC 할 수 있음
+
+    //# JWT 생성 혹은 검증에 사용될 시크릿 키
+    //# 시크릿 키 같은 데이터는 보안에 유의해야 하기 때문에 application.properties 또는 환경변수로 등록해서 사용
+    @Value("${jwt.secret-key}")
+    private String SECRET_KEY;
+
+    //# JWT 생성 메서드
+    public String create(String subject) {
+
+        //@ +1시간 한 값을 받아옴
+        Date expiredDate = Date.from(Instant.now().plus(1, ChronoUnit.HOURS));
+
+        //@ jwt를 문자열로 받기 위한 작업
+        String jwt = Jwts.builder()
+                        .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                        .setSubject(subject).setIssuedAt(new Date()).setExpiration(expiredDate)
+                        .compact();
+
+        return jwt;
+    }
+
+    //# JWT 검증
+    public String validate(String jwt) {
+        Claims claims = Jwts.parser().setSigningKey(SECRET_KEY)
+                            .parseClaimsJws(jwt).getBody();
+        return claims.getSubject();
+    } 
+
+}
