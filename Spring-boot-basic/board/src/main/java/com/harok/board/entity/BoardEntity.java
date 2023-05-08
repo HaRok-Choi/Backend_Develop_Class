@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.harok.board.dto.request.board.PostBoardRequestDto;
+import com.harok.board.dto.request.board2.PostBoardRequestDto2;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,6 +41,19 @@ public class BoardEntity {
         String writeDateTime = simpleDateFormat.format(now);
 
         this.writerEmail = dto.getBoardWriterEmail();
+        this.title = dto.getBoardTitle();
+        this.content = dto.getBoardContent();
+        this.boardImageUrl = dto.getBoardImageUrl();
+        this.writeDatetime = writeDateTime;
+        this.viewCount = 0;
+    }
+
+    public BoardEntity(String userEmail, PostBoardRequestDto2 dto) {
+        Date now = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String writeDateTime = simpleDateFormat.format(now);
+
+        this.writerEmail = userEmail;
         this.title = dto.getBoardTitle();
         this.content = dto.getBoardContent();
         this.boardImageUrl = dto.getBoardImageUrl();
