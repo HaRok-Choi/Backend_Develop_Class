@@ -36,7 +36,7 @@ public class FileController {
     }
 
     //# 파일 불러오기
-    @GetMapping(value = {GET_URL}, produces = {MediaType.ALL_VALUE})
+    @GetMapping(value = {GET_URL}, produces = {MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_JPEG_VALUE})
     public Resource getFile(
         @PathVariable("fileName") String fileName
     ) {

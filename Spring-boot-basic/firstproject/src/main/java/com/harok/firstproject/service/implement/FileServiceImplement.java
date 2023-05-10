@@ -27,6 +27,7 @@ public class FileServiceImplement implements FileService{
 
         //# 파일명 가져오기
         String originalFileName = file.getOriginalFilename();
+        
         //# 파일의 확장자 가져오기
         int extensionIndex = originalFileName.lastIndexOf(".");
         String extension = originalFileName.substring(extensionIndex);
@@ -63,8 +64,8 @@ public class FileServiceImplement implements FileService{
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-
         return file;
     }
+
     
 }
